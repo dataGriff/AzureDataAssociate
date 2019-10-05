@@ -1,0 +1,55 @@
+﻿{
+	"SessionID" : "100",
+  "VisitID": "1",
+  "UTM":  "A",
+	"SessionDate" : "2019-09-22 17:00"
+}
+{
+  "SessionID": "101",
+  "VisitID": "1",
+  "UTM": "A",
+  "SessionDate": "2019-09-22 17:05"
+}
+{
+  "SessionID": "102",
+  "VisitID": "1",
+  "UTM": "A",
+  "SessionDate": "2019-09-22 17:10"
+}
+{
+  "SessionID": "103",
+  "VisitID": "2",
+  "UTM": "A",
+  "SessionDate": "2019-09-22 17:10"
+}
+{
+  "SessionID": "104",
+  "VisitID": "1",
+  "UTM": "A",
+  "SessionDate": "2019-09-22 17:25"
+}
+{
+  "SessionID": "105",
+  "VisitID": "1",
+  "UTM": "B",
+  "SessionDate": "2019-09-22 17:35"
+}
+{
+  "SessionID": "106",
+  "VisitID": "1",
+  "UTM": "A",
+  "SessionDate": "2019-09-22 17:36"
+}
+{
+  "SessionID": "108",
+  "VisitID": "1",
+  "UTM": "A",
+  "SessionDate": "2019-09-22 18:15"
+}
+{
+  "SessionID": "109",
+  "VisitID": "1",
+  "UTM": "A",
+  "SessionDate": "2019-09-23 17:36"
+}
+

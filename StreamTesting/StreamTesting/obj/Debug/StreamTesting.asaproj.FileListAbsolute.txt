@@ -1,0 +1,2 @@
+E:\Documents\Projects\AzureDataAssociate\StreamTesting\StreamTesting\bin\Debug\StreamTesting
+E:\Documents\Projects\AzureDataAssociate\StreamTesting\StreamTesting\obj\Debug\StreamTesting

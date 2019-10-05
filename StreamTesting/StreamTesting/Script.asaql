@@ -1,0 +1,157 @@
+﻿WITH CTE_Sessions AS
+(
+SELECT 
+    s.SessionID
+    ,s.SessionDate AS EventDate
+    ,s.VisitID
+    ,s.utm
+    ,'s' AS EventType
+FROM
+    testsessions s TIMESTAMP BY SessionDate 
+),
+CTE_Events AS 
+(
+SELECT 
+    SessionID
+    , EventDate
+    , 'e' AS EventType
+FROM
+    testevents TIMESTAMP BY EventDate 
+UNION ALL
+SELECT 
+    SessionID
+    , EventDate
+    , EventType
+FROM
+    CTE_Sessions
+)
+, CTE_SessionInfo as 
+(
+SELECT  s.SessionID,
+        s.VisitID,
+        s.utm,
+        LAG(s.UTM, 1) OVER (PARTITION By s.VisitID LIMIT DURATION(minute, 30)) AS PreviousUTM,
+        LAG(s.SessionID,1) OVER (PARTITION By s.VisitID LIMIT DURATION(minute, 30)) AS PreviousSessionID,
+        e.EventDate,
+        e.EventType
+FROM    CTE_Sessions s 
+JOIN    cte_events e    
+        ON DATEDIFF(MINUTE,s,e) BETWEEN 0 AND 1440 --1 DAY
+        AND s.SessionID = e.SessionID
+)
+, CTE_ALL AS 
+(
+SELECT
+        s.SessionID,
+        s.VisitID,
+        CASE WHEN s.PreviousUTM <> s.utm OR s.PreviousSessionID IS NULL  THEN 1 ELSE 0 END AS IsNewVisit,
+        s.EventType
+FROM    CTE_SessionInfo s
+)
+, CTE_NEW AS 
+(
+SELECT
+        a.SessionID,
+        a.VisitID
+FROM    CTE_ALL a
+WHERE   a.IsNewVisit = 1
+)
+
+SELECT 
+    MAX(n.SessionId) AS ConfusedVisitID
+    , A.SessionID AS SessionID
+FROM CTE_ALL  A
+JOIN CTE_NEW n --should we left outer her if want to include things with start over a day ago??
+    ON DATEDIFF(MINUTE,N,A) BETWEEN 0 AND 1440 --1 DAY
+    AND a.VisitID = n.VisitID
+WHERE   a.IsNewVisit = 0
+    AND a.EventType = 's'
+GROUP BY  
+    SLIDINGWINDOW(minute,30), A.SessionID
+UNION 
+SELECT  
+    a.SessionID AS ConfusedVisitID
+    , A.SessionID
+FROM CTE_NEW a
+
+
+
+/*with cte AS
+(
+    SELECT
+        SessionID,
+        VisitID,
+        utm,
+        --LicensePlate AS CurrentCarLicensePlate,
+        lag(VisitID,1) OVER (PARTITION By VisitID LIMIT DURATION(minute, 30)) AS PrevVisitID,
+        lag(SessionID,1) OVER (PARTITION By VisitID LIMIT DURATION(minute, 30)) AS PrevSessionID,
+        --ISFIRST(mi, 30) OVER (PARTITION BY VisitID)  ,
+       -- ISFIRST(mi, 10) OVER (PARTITION BY visitid) as IsFirstSessionID,
+        LAG(UTM, 1) OVER (PARTITION By VisitID LIMIT DURATION(minute, 30)) AS PreviousUTM,
+        LAG(EventDate, 1) OVER (LIMIT DURATION(minute, 30)) AS PreviousSessionDate,
+       LAST(SessionID) OVER (PARTITION BY VisitID LIMIT DURATION(minute, 30)) AS LastSessionID
+,EventDate
+    FROM
+        test2 TIMESTAMP BY EventDate
+), cte1 AS
+(
+    SELECT
+        SessionID,
+        VisitID,
+        utm,
+        --LicensePlate AS CurrentCarLicensePlate,
+        lag(VisitID,1) OVER (PARTITION By VisitID LIMIT DURATION(minute, 30)) AS PrevVisitID,
+        lag(SessionID,1) OVER (PARTITION By VisitID LIMIT DURATION(minute, 30)) AS PrevSessionID,
+        --ISFIRST(mi, 30) OVER (PARTITION BY VisitID)  ,
+       -- ISFIRST(mi, 10) OVER (PARTITION BY visitid) as IsFirstSessionID,
+        LAG(UTM, 1) OVER (partition by VisitID LIMIT DURATION(minute, 30)) AS PreviousUTM,
+        LAG(EventDate, 1) OVER (LIMIT DURATION(minute, 30)) AS PreviousSessionDate,
+       LAST(SessionID) OVER (PARTITION BY VisitID LIMIT DURATION(minute, 30)) AS LastSessionID
+,EventDate
+    FROM
+        test2 TIMESTAMP BY EventDate
+)
+
+
+SELECT *,
+case when PreviousUTM <> UTM then VisitID ELSE
+coalesce(PrevVisitID, VisitID ) END AS ConfusedVisitID
+ FROM CTE C
+
+
+
+SELECT C.*,
+c1.MinSessionID
+--coalesce(PrevSessionID, SessionID) AS ConfusedVisitID
+ FROM CTE C
+LEFT OUTER JOIN (SELECT VisitID, min(sessionid) AS MinSessionID 
+FROM CTE1
+GROUP BY        sessionwindow(minute, 30,60) OVER (PARTITION BY VisitID), VisitID) C1 on
+
+c.PrevVisitID = c1.VisitID
+AND DATEDIFF(minute,C,C1) BETWEEN 0 AND 30
+
+--ORDER BY C.EVENTDATE
+*/
+
+/*
+    WITH LastInWindow AS
+    (
+        SELECT 
+VisitID,
+            MAX(EventDate) AS LastEventTime
+        FROM 
+            test2 TIMESTAMP BY EventDate
+        GROUP BY 
+            sessionwindow(minute, 30,60) OVER (PARTITION BY VisitID), VisitID
+    )
+    SELECT 
+        test2.visitid,
+        test2.EventDate
+    FROM
+        test2 TIMESTAMP BY EventDate 
+        INNER JOIN LastInWindow
+        ON DATEDIFF(minute, test2, LastInWindow) BETWEEN 0 AND 30
+        AND test2.EventDate = LastInWindow.LastEventTime
+AND test2.VisitID = LastInWindow.VisitID
+*/

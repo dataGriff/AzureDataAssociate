@@ -1,0 +1,11 @@
+﻿{
+  "InputAlias": "testsessions",
+  "Type": "Data Stream",
+  "Format": "Json",
+  "FilePath": "..\\..\\TestSessions.json",
+  "SerializationDllPath": null,
+  "SerializationClassName": null,
+  "SerializationDllPathInLocal": null,
+  "Sample": "{\r\n  \"SessionID\": \"100\",\r\n  \"VisitID\": \"1\",\r\n  \"UTM\": \"A\",\r\n  \"EventDate\": \"2019-09-22 17:00\"\r\n}",
+  "ScriptType": "InputMock"
+}

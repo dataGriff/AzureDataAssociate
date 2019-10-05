@@ -1,0 +1,11 @@
+﻿{
+  "InputAlias": "test",
+  "Type": "Data Stream",
+  "Format": "Json",
+  "FilePath": "..\\TestInput.json",
+  "SerializationDllPath": null,
+  "SerializationClassName": null,
+  "SerializationDllPathInLocal": null,
+  "Sample": "{\r\n  \"City\": \"Reykjavik\",\r\n  \"Coordinates\": {\r\n    \"Latitude\": 64,\r\n    \"Longitude\": 21\r\n  },\r\n  \"Census\": {\r\n    \"Population\": 125000,\r\n    \"Municipality\": \"Reykjavík\",\r\n    \"Region\": \"Höfuðborgarsvæðið\"\r\n  }\r\n}",
+  "ScriptType": "InputMock"
+}

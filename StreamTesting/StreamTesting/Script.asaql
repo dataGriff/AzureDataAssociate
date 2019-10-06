@@ -1,4 +1,12 @@
-﻿WITH CTE_Sessions AS
+﻿ /*
+SELECT
+        TopOne() OVER (ORDER BY SessionDate) AS firstEvent
+    FROM
+        testsessions TIMESTAMP BY SessionDate
+    GROUP BY SLIDINGWINDOW(minute,30)
+*/
+
+WITH CTE_Sessions AS
 (
 SELECT 
     s.SessionID
@@ -6,6 +14,7 @@ SELECT
     ,s.VisitID
     ,s.utm
     ,'s' AS EventType
+--,     ISFIRST(mi, 30) OVER (PARTITION BY VisitID) as first  --based on tumbling window so doesn't help
 FROM
     testsessions s TIMESTAMP BY SessionDate 
 ),
@@ -36,7 +45,7 @@ SELECT  s.SessionID,
         e.EventType
 FROM    CTE_Sessions s 
 JOIN    cte_events e    
-        ON DATEDIFF(MINUTE,s,e) BETWEEN 0 AND 1440 --1 DAY
+        ON DATEDIFF(MINUTE,s,e) BETWEEN 0 AND 30 --1 DAY
         AND s.SessionID = e.SessionID
 )
 , CTE_ALL AS 
@@ -44,36 +53,45 @@ JOIN    cte_events e
 SELECT
         s.SessionID,
         s.VisitID,
-        CASE WHEN s.PreviousUTM <> s.utm OR s.PreviousSessionID IS NULL  THEN 1 ELSE 0 END AS IsNewVisit,
-        s.EventType
+        CASE WHEN s.PreviousUTM <> s.utm OR s.PreviousSessionID IS NULL THEN 1 ELSE 0 END AS IsNewVisit,
+        s.EventType, EventDate
 FROM    CTE_SessionInfo s
 )
-, CTE_NEW AS 
+/*, CTE_NEW AS 
 (
 SELECT
         a.SessionID,
-        a.VisitID
+        a.VisitID, EventDate,a.IsNewVisit
 FROM    CTE_ALL a
 WHERE   a.IsNewVisit = 1
-)
+)*/
 
 SELECT 
-    MAX(n.SessionId) AS ConfusedVisitID
+    LAST(a.SessionID) OVER (PARTITION BY VisitID LIMIT DURATION(MINUTE, 60) WHEN  a.IsNewVisit = 1)    AS ConfusedVisitID --needs to be wide enough window to find earliest visit...
+    --, n.EventDate AS ConfusedVisitStartDate
     , A.SessionID AS SessionID
+    --, a.IsNewVisit
+    --, a.EventDate AS SessionDate
+    --, a.VisitID
 FROM CTE_ALL  A
-JOIN CTE_NEW n --should we left outer her if want to include things with start over a day ago??
+/*JOIN CTE_NEW n --should we left outer her if want to include things with start over a day ago??
     ON DATEDIFF(MINUTE,N,A) BETWEEN 0 AND 1440 --1 DAY
-    AND a.VisitID = n.VisitID
-WHERE   a.IsNewVisit = 0
-    AND a.EventType = 's'
-GROUP BY  
-    SLIDINGWINDOW(minute,30), A.SessionID
+    AND a.VisitID = n.VisitID*/
+WHERE   --a.IsNewVisit = 0
+    --AND 
+a.EventType = 's'
+
+/*
 UNION 
+
 SELECT  
     a.SessionID AS ConfusedVisitID
+    , a.eventdate AS ConfusedVisitStartDate
     , A.SessionID
+    , a.IsNewVisit
+    , a.EventDate AS SessionDate
 FROM CTE_NEW a
-
+*/
 
 
 /*with cte AS

@@ -1,54 +1,54 @@
 ﻿{
-	"SessionID" : "100",
-  "VisitID": "1",
-  "UTM":  "A",
-	"SessionDate" : "2019-09-22 17:00"
+  "SessionID": "D6215FB6-6C86-4A4D-B503-ABEE2D1D34B1",
+  "VisitID": "BB162998-D7AF-4736-87DD-25E1E7D51992",
+  "UTM": "A",
+  "SessionDate": "2019-09-22 17:00"
 }
 {
-  "SessionID": "101",
-  "VisitID": "1",
+  "SessionID": "7CD840CE-EDF5-4864-BC98-2B0F2B8B9AFD",
+  "VisitID": "BB162998-D7AF-4736-87DD-25E1E7D51992",
   "UTM": "A",
   "SessionDate": "2019-09-22 17:05"
 }
 {
-  "SessionID": "102",
-  "VisitID": "1",
+  "SessionID": "0BE0243A-F568-4591-B650-F55423ECFB79",
+  "VisitID": "BB162998-D7AF-4736-87DD-25E1E7D51992",
   "UTM": "A",
   "SessionDate": "2019-09-22 17:10"
 }
 {
-  "SessionID": "103",
-  "VisitID": "2",
+  "SessionID": "3538D749-641F-4E99-BBDD-60E377E09513",
+  "VisitID": "A911DD3C-AC33-422F-BF9B-00B9E0A738C9",
   "UTM": "A",
   "SessionDate": "2019-09-22 17:10"
 }
 {
-  "SessionID": "104",
-  "VisitID": "1",
+  "SessionID": "22F868F8-916C-4CDF-B8BA-27BC5587A0AF",
+  "VisitID": "BB162998-D7AF-4736-87DD-25E1E7D51992",
   "UTM": "A",
   "SessionDate": "2019-09-22 17:25"
 }
 {
-  "SessionID": "105",
-  "VisitID": "1",
+  "SessionID": "08A88F24-B8B1-48A9-B7A4-96DF18A835EA",
+  "VisitID": "BB162998-D7AF-4736-87DD-25E1E7D51992",
   "UTM": "B",
   "SessionDate": "2019-09-22 17:35"
 }
 {
-  "SessionID": "106",
-  "VisitID": "1",
+  "SessionID": "E61BA1C9-08C7-46AD-840C-61B650536BC6",
+  "VisitID": "BB162998-D7AF-4736-87DD-25E1E7D51992",
   "UTM": "A",
   "SessionDate": "2019-09-22 17:36"
 }
 {
-  "SessionID": "108",
-  "VisitID": "1",
+  "SessionID": "08BBCE70-0C19-427B-92D9-4C83B48072F5",
+  "VisitID": "BB162998-D7AF-4736-87DD-25E1E7D51992",
   "UTM": "A",
   "SessionDate": "2019-09-22 18:15"
 }
 {
-  "SessionID": "109",
-  "VisitID": "1",
+  "SessionID": "857D81BF-50D8-4362-B1BB-148128113130",
+  "VisitID": "BB162998-D7AF-4736-87DD-25E1E7D51992",
   "UTM": "A",
   "SessionDate": "2019-09-23 17:36"
 }

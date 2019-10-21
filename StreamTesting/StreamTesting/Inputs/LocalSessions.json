@@ -6,6 +6,6 @@
   "SerializationDllPath": null,
   "SerializationClassName": null,
   "SerializationDllPathInLocal": null,
-  "Sample": "{\r\n  \"SessionID\": \"100\",\r\n  \"VisitID\": \"1\",\r\n  \"UTM\": \"A\",\r\n  \"SessionDate\": \"2019-09-22 17:00\"\r\n}",
+  "Sample": "{\r\n  \"SessionID\": \"D6215FB6-6C86-4A4D-B503-ABEE2D1D34B1\",\r\n  \"VisitID\": \"BB162998-D7AF-4736-87DD-25E1E7D51992\",\r\n  \"UTM\": \"A\",\r\n  \"SessionDate\": \"2019-09-22 17:00\"\r\n}",
   "ScriptType": "InputMock"
 }

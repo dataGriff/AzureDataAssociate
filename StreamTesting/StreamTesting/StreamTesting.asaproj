@@ -25,6 +25,10 @@
     </ScriptCode>
   </ItemGroup>
   <ItemGroup>
+    <Configure Include="GetString.js.json">
+      <SubType>JSFunctionConfig</SubType>
+      <DependentUpon>GetString.js</DependentUpon>
+    </Configure>
     <Configure Include="Inputs\Input.json">
       <SubType>Input</SubType>
     </Configure>
@@ -48,6 +52,11 @@
     <Folder Include="Inputs" />
     <Folder Include="Functions" />
     <Folder Include="Outputs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GetString.js">
+      <SubType>JSFunctionCode</SubType>
+    </Content>
   </ItemGroup>
   <Import Project="$(ASATargetsFilePath)" />
 </Project>

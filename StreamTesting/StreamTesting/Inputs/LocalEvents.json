@@ -6,6 +6,6 @@
   "SerializationDllPath": null,
   "SerializationClassName": null,
   "SerializationDllPathInLocal": null,
-  "Sample": "{\r\n  \"SessionID\": \"100\",\r\n  \"EventID\": \"1\",\r\n  \"EventDate\": \"2019-09-22 17:01\"\r\n}",
+  "Sample": "{\r\n  \"SessionID\": \"D6215FB6-6C86-4A4D-B503-ABEE2D1D34B1\",\r\n  \"EventID\": \"74CE8A38-1933-400B-B2A7-DFE5A1E0E631\",\r\n  \"EventDate\": \"2019-09-22 17:01\"\r\n}",
   "ScriptType": "InputMock"
 }

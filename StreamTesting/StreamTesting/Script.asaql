@@ -73,6 +73,7 @@ SELECT
     --, a.IsNewVisit
     --, a.EventDate AS SessionDate
     --, a.VisitID
+,udf.GetString('http://poo.domain.com?utm_medium=poo2&')
 FROM CTE_ALL  A
 /*JOIN CTE_NEW n --should we left outer her if want to include things with start over a day ago??
     ON DATEDIFF(MINUTE,N,A) BETWEEN 0 AND 1440 --1 DAY

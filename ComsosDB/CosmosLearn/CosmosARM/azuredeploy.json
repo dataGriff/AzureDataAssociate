@@ -1,0 +1,188 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "cosdbname": {
+      "defaultValue": "datagriffirlearncosdb2",
+      "type": "String"
+    },
+    "location": {
+      "defaultValue": "North Europe",
+      "type": "String"
+    },
+    "api": {
+      "defaultValue": "Core (SQL)",
+      "type": "String"
+    },
+    "automaticFailover": {
+      "defaultValue": false,
+      "type": "bool"
+    },
+    "multipleWrite": {
+      "defaultValue": true,
+      "type": "bool"
+    },
+    "isVirtualNetworkFilterEnabled": {
+      "defaultValue": false,
+      "type": "bool"
+    },
+    "consistencyLevel": {
+      "defaultValue": "Session",
+      "type": "string"
+    },
+    "consistencyMinSeconds": {
+      "defaultValue": 5,
+      "type": "int"
+    },
+    "consistencyMaxSeconds": {
+      "defaultValue": 100,
+      "type": "int"
+    },
+    "databaseName": {
+      "defaultValue": "products",
+      "type": "string"
+    },
+    "containerName": {
+      "defaultValue": "clothing",
+      "type": "string"
+    },
+    "accountThroughPut": {
+      "defaultValue": 400,
+      "type": "int"
+    },
+    "indexingMode": {
+      "defaultValue": "consistent",
+      "type": "string"
+    },
+    "indexIncludedPath": {
+      "defaultValue": "/*",
+      "type": "string"
+    },
+    "indexExcludedPath": {
+      "defaultValue": "/\"_etag\"/?",
+      "type": "string"
+    },
+    "partitionKey": {
+      "defaultValue": "/productid",
+      "type": "string"
+    },
+    "partitionKeyKind": {
+      "defaultValue": "Hash",
+      "type": "string"
+    },
+    "conflictResolutionPolicy": {
+      "defaultValue": "LastWriterWins",
+      "type": "string"
+    },
+    "conflictResolutionPath": {
+      "defaultValue": "/_ts",
+      "type": "string"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts",
+      "apiVersion": "2019-08-01",
+      "name": "[parameters('cosdbname')]",
+      "location": "[parameters('location')]",
+      "tags": {
+        "defaultExperience": "[parameters('api')]",
+        "hidden-cosmos-mmspecial": ""
+      },
+      "kind": "GlobalDocumentDB",
+      "properties": {
+        "enableAutomaticFailover": "[parameters('automaticFailover')]",
+        "enableMultipleWriteLocations": "[parameters('multipleWrite')]",
+        "isVirtualNetworkFilterEnabled": "[parameters('isVirtualNetworkFilterEnabled')]",
+        "virtualNetworkRules": [],
+        "disableKeyBasedMetadataWriteAccess": false,
+        "databaseAccountOfferType": "Standard",
+        "consistencyPolicy": {
+          "defaultConsistencyLevel": "[parameters('consistencyLevel')]",
+          "maxIntervalInSeconds": "[parameters('consistencyMinSeconds')]",
+          "maxStalenessPrefix": "[parameters('consistencyMaxSeconds')]"
+        },
+        "locations": [
+          {
+            "locationName": "[parameters('location')]",
+            "provisioningState": "Succeeded",
+            "failoverPriority": 0,
+            "isZoneRedundant": false
+          }
+        ],
+        "capabilities": []
+      }
+    },
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases",
+      "apiVersion": "2019-08-01",
+      "name": "[concat(parameters('cosdbname'), '/', parameters('databaseName'))]",
+      "dependsOn": [
+        "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosdbname'))]"
+      ],
+      "properties": {
+        "resource": {
+          "id": "[parameters('databaseName')]"
+        },
+        "options": {}
+      }
+    },
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers",
+      "apiVersion": "2019-08-01",
+      "name": "[concat(parameters('cosdbname'), '/', parameters('databaseName'), '/', parameters('containerName'))]",
+      "dependsOn": [
+        "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('cosdbname'),  parameters('databaseName'))]",
+        "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosdbname'))]"
+      ],
+      "properties": {
+        "resource": {
+          "id": "[parameters('containerName')]",
+          "indexingPolicy": {
+            "indexingMode": "[parameters('indexingMode')]",
+            "automatic": true,
+            "includedPaths": [
+              {
+                "path": "[parameters('indexIncludedPath')]"
+              }
+            ],
+            "excludedPaths": [
+              {
+                "path": "[parameters('indexExcludedPath')]"
+              }
+            ]
+          },
+          "partitionKey": {
+            "paths": [
+              "[parameters('partitionKey')]"
+            ],
+            "kind": "[parameters('partitionKeyKind')]",
+            "version": 2
+          },
+          "conflictResolutionPolicy": {
+            "mode": "[parameters('conflictResolutionPolicy')]",
+            "conflictResolutionPath": "[parameters('conflictResolutionPath')]"
+          }
+        },
+        "options": {}
+      }
+    },
+    {
+      "type": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/throughputSettings",
+      "apiVersion": "2019-08-01",
+      "name": "[concat(parameters('cosdbname'), '/', parameters('databaseName'), '/', parameters('containerName'), '/default')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers', parameters('cosdbname'), parameters('databaseName'), parameters('containerName'))]",
+        "[resourceId('Microsoft.DocumentDB/databaseAccounts/sqlDatabases', parameters('cosdbname'), parameters('databaseName'))]",
+        "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('cosdbname'))]"
+      ],
+      "properties": {
+        "resource": {
+          "throughput": "[parameters('accountThroughPut')]"
+
+        }
+      }
+    }
+  ]
+}

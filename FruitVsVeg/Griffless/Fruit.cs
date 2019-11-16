@@ -17,10 +17,13 @@ namespace Griffless
 
         public StandardLog standardLog { get; private set; }
 
-        public Fruit(string colour)
+        public string EventType;
+
+        public Fruit(string eventType)
 
         {
-            this.colour = colour;
+            this.EventType = eventType;
+            this.colour = "Yellow";
             GetFruitNameAndPrice();
             standardLog = new StandardLog(StandardLog.LogCode.Success);
         }
@@ -32,22 +35,6 @@ namespace Griffless
                 case "Yellow":
                     name = "Banana";
                     price = 50;
-                    break;
-                case "Red":
-                    name = "Strawberry";
-                    price = 75;
-                    break;
-                case "Green":
-                    name = "Apple";
-                    price = 25;
-                    break;
-                case "Orange":
-                    name = "Orange";
-                    price = 35;
-                    break;
-                case "Purple":
-                    name = "Grape";
-                    price = 10;
                     break;
             }
         }

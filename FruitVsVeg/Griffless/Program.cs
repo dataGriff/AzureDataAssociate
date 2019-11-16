@@ -5,6 +5,7 @@ using Microsoft.Azure.EventHubs;
 using System.Text;
 using FruitConsole;
 using System.Net;
+using System.Linq;
 
 namespace Griffless
 {
@@ -14,62 +15,51 @@ namespace Griffless
 
         static void Main(string[] args)
         {
-            string connfruitehub = "Endpoint=sb://grifffruitehubns.servicebus.windows.net/;SharedAccessKeyName=fruitsend;SharedAccessKey=fFh5+RxebdvKMSk+/bx6suOMCtQQkheEGw+DhWwAIBk=;EntityPath=fruitehub";
-            string fruitehubname = "fruitehub";
+            string connehub = "Endpoint=sb://fruitvegmixehns2.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=isQDzjanuvJbAWkRdO0WlU4dAPU1s9aQNyNtet1vod0=";
+            string hubname = "mixhub";
+
+            string connehub2 = "Endpoint=sb://fruitvegsepehns2.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=G0xMqwCjBVpqqbUr/nADJARZCHQS469JDO9Qq016I/g=";
+            string hubname2 = "fruit";
+            string hubname3 = "veg";
+
 
             while (1 == 1)
                 {
-                try
-                {
-                    string a = GetRandomColour(true);
+                    //WaitStandard();
+
+                    string a = "F";
                     Fruit fruit = new Fruit(a);
                     var message = JsonConvert.SerializeObject(fruit);                 //Remember Install-Package Newtonsoft.Json
-                    WaitRandom();
-                    Console.WriteLine(message);
-                    EventHubWrapper(connfruitehub, fruitehubname, message).GetAwaiter().GetResult();  
-                }
-                catch (ColourException e)
-                {
-                    Console.BackgroundColor = ConsoleColor.Red;
-                    var error = JsonConvert.SerializeObject(e);
-                    Console.WriteLine(error);
-                    Console.ResetColor();
-                    //string ehubname = "errorehub";
-                    //EventHubWrapper(connehub, ehubname, error).GetAwaiter().GetResult();
-                }
+           
+                    //Console.WriteLine(message);
+                    EventHubWrapper(connehub, hubname, message).GetAwaiter().GetResult();
+                    EventHubWrapper(connehub2, hubname2, message).GetAwaiter().GetResult();
+
+                string b = "V";
+                    Fruit veg = new Fruit(b);
+                    var message2 = JsonConvert.SerializeObject(veg);                 //Remember Install-Package Newtonsoft.Json
+                                                                                     //Console.WriteLine(message2);
+
+            //    EventHubWrapper(connehub, hubname, message2).GetAwaiter().GetResult();
+               // EventHubWrapper(connehub2, hubname3, message2).GetAwaiter().GetResult();
+               RepeatAction(2, () => { EventHubWrapper(connehub, hubname, message2).GetAwaiter().GetResult(); });
+               RepeatAction(2, () => { EventHubWrapper(connehub2, hubname3, message2).GetAwaiter().GetResult(); });
+
+                Console.WriteLine("done batch");
+         
             }
         }
 
-        public static string GetRandomColour(bool errorEnabled)
+        public static void RepeatAction(int repeatCount, Action action)
         {
-            string randomColour;
-            Array values = Enum.GetValues(typeof(Colour.Name));
-            Random random = new Random();
-            Colour.Name colour = (Colour.Name)values.GetValue(random.Next(values.Length));
-            randomColour = colour.ToString();
-            if (errorEnabled)
-                {
-                    ThrowRandomError(randomColour);
-                }
-            return randomColour;
+            for (int i = 0; i < repeatCount; i++)
+                action();
         }
 
-        public static void WaitRandom()
+        public static void WaitStandard()
         {
-            Random random = new Random();
-            int randomWait = random.Next(0, 1000);
-            System.Threading.Thread.Sleep(randomWait);
-        }
-
-        public static void ThrowRandomError(string colour)
-        {
-            Random random = new Random();
-            int randomNum = random.Next(0, 10);
-            if (randomNum == 1)
-            {
-                string message = "This is a random error for the colour " + colour + "!";
-                throw new ColourException(message, colour);
-            }
+            int standardWait =  500;
+            System.Threading.Thread.Sleep(standardWait);
         }
 
         private static async Task EventHubWrapper(string connectionString, string hubName, string message)

@@ -8,6 +8,9 @@ EndProject
 Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "FruitARM", "FruitARM\FruitARM.deployproj", "{432227E7-E292-4279-A711-035213AC08EA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{98470DB2-105C-46FD-A74B-88CCEB4995BC}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.md = ReadMe.md
+	EndProjectSection
 EndProject
 Project("{E6C563F2-BDC2-4A24-ACBF-01715157DCBB}") = "FruitStream", "FruitStream\FruitStream.asaproj", "{979BA37C-F754-46F7-BB67-721F1D658E42}"
 EndProject

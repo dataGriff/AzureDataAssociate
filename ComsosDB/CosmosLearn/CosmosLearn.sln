@@ -5,6 +5,23 @@ VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "CosmosARM", "CosmosARM\CosmosARM.deployproj", "{92E8B89D-EFCE-41A3-A233-547C375BF394}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClothingData", "ClothingData", "{19257CDC-49DF-4EFE-B8B3-ED0858874D3B}"
+	ProjectSection(SolutionItems) = preProject
+		ClothingData01.json = ClothingData01.json
+		ClothingData02.json = ClothingData02.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Queries", "Queries", "{1B2ECF96-1190-42ED-A446-CD17D93FABC9}"
+	ProjectSection(SolutionItems) = preProject
+		SQLQueries.sql = SQLQueries.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProceduresAndUDFs", "ProceduresAndUDFs", "{1D935614-DF62-4E19-96A2-9DD3AC7AF755}"
+	ProjectSection(SolutionItems) = preProject
+		CreateDocument.js = CreateDocument.js
+		productTax.js = productTax.js
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

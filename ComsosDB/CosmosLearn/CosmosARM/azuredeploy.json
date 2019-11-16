@@ -63,7 +63,7 @@
       "type": "string"
     },
     "partitionKey": {
-      "defaultValue": "/productid",
+      "defaultValue": "/productId", //case sensitive
       "type": "string"
     },
     "partitionKeyKind": {
@@ -72,7 +72,8 @@
     },
     "conflictResolutionPolicy": {
       "defaultValue": "LastWriterWins",
-      "type": "string"
+      "type": "string",
+      "allowedValues": [ "LastWriterWins", "Userdefinedfunction", "Async" ]
     },
     "conflictResolutionPath": {
       "defaultValue": "/_ts",

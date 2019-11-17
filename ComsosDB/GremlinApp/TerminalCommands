@@ -1,0 +1,46 @@
+dotnet run "g.V().drop()"
+
+dotnet run "g.addV('Product').property('id', 'p1').property('name', 'Phone Charger').property('price', 12.99)"
+dotnet run "g.addV('Product').property('id', 'p2').property('name', 'USB C Cable Charger').property('price', 8.99)"
+dotnet run "g.addV('Product').property('id', 'p3').property('name', 'Gardening Gloves').property('price', 2.99)"
+
+dotnet run "g.addV('Category').property('id', 'c1').property('name', 'Mobile Phones')"
+dotnet run "g.addV('Category').property('id', 'c2').property('name', 'Gardening')"
+
+dotnet run "g.V()"
+
+dotnet run "g.V('p1').addE('belongsto').to(g.V('c1'))"
+dotnet run "g.V('p2').addE('belongsto').to(g.V('c1'))"
+dotnet run "g.V('p3').addE('belongsto').to(g.V('c2'))"
+
+dotnet run "g.E()"
+
+dotnet add package Newtonsoft.Json
+dotnet restore
+
+dotnet run "g.V()"
+
+dotnet run "g.V().count()"
+
+--select where product has category
+dotnet run "g.V().hasLabel('Category')"
+
+--select where product id is p1
+dotnet run "g.V().hasLabel('Product').has('id','p1')"
+
+--select where category has name
+dotnet run "g.V().hasLabel('Category').values('name')"
+
+--select name and price 
+dotnet run "g.V().hasLabel('Product').values('name','price')"
+
+--select name and price ordered by name 
+dotnet run "g.V().hasLabel('Product').order().by('name', incr).values('name','price')"
+
+--select name and price ordered by price desc
+dotnet run "g.V().hasLabel('Product').order().by('price', decr).values('name','price')"
+
+--update a price
+dotnet run "g.V('p1').property('price', 15.99)"
+
+dotnet run "g.E().count()"

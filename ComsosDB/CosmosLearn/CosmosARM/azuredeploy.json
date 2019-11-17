@@ -52,7 +52,8 @@
     },
     "indexingMode": {
       "defaultValue": "consistent",
-      "type": "string"
+      "type": "string",
+      "allowedValues": [ "consistent", "lazy", "none" ]
     },
     "indexIncludedPath": {
       "defaultValue": "/*",

@@ -1,0 +1,4 @@
+String connectionURL =   
+    "jdbc:sqlserver://<your_azure_sql_datawarehouse_fqdn>:1433;" +  
+     "databaseName=DemoDW;username=your_username;password=your_password " +  
+     "encrypt=true ";

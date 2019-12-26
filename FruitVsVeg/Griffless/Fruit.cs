@@ -19,6 +19,8 @@ namespace Griffless
 
         public string EventType;
 
+        public Dictionary<string, string> testjson;
+
         public Fruit(string eventType)
 
         {
@@ -26,6 +28,10 @@ namespace Griffless
             this.colour = "Yellow";
             GetFruitNameAndPrice();
             standardLog = new StandardLog(StandardLog.LogCode.Success);
+            this.testjson = new Dictionary<string, string>();
+            testjson.Add("a", "1");
+            testjson.Add("b", "2");
+            testjson.Add("c", "3");
         }
 
         public void GetFruitNameAndPrice ()

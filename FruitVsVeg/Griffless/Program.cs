@@ -15,13 +15,13 @@ namespace Griffless
 
         static void Main(string[] args)
         {
-            string connehub = "Endpoint=sb://grifffruit.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=2qtOtMBOp3Ae5cKjHULKrPkgpNn8t/RO6YDDZ0VWieI=";
-            string hubname = "mixed";
-            string hubname2 = "fruit";
-            string hubname3 = "veg";
+            string connehub = "Endpoint=sb://grifftestjson.servicebus.windows.net/;SharedAccessKeyName=send;SharedAccessKey=MhPDUtbFl/kP/RN3C30QOdljUlxtkLrf3k+zsSJigDw=";
+            string hubname = "fruit";
+           // string hubname2 = "fruit";
+           // string hubname3 = "veg";
 
-            int fruitcount = 0;
-            int vegcount = 0;
+           // int fruitcount = 0;
+          //  int vegcount = 0;
 
 
             while (1 == 1)
@@ -31,10 +31,15 @@ namespace Griffless
                     string a = "F";
                     Fruit fruit = new Fruit(a);
                     var message = JsonConvert.SerializeObject(fruit);                 //Remember Install-Package Newtonsoft.Json
-           
+                Console.WriteLine(message);
+               // Console.ReadKey();
+
+                EventHubWrapper(connehub, hubname, message).GetAwaiter().GetResult();
+
+                /*
                     //Console.WriteLine(message);
-                    EventHubWrapper(connehub, hubname, message).GetAwaiter().GetResult();
-                    EventHubWrapper(connehub, hubname2, message).GetAwaiter().GetResult();
+               //     EventHubWrapper(connehub, hubname, message).GetAwaiter().GetResult();
+                 //   EventHubWrapper(connehub, hubname2, message).GetAwaiter().GetResult();
 
                 fruitcount++;
                 Console.WriteLine("done this many fruit: " + fruitcount.ToString());
@@ -46,14 +51,15 @@ namespace Griffless
 
             //    EventHubWrapper(connehub, hubname, message2).GetAwaiter().GetResult();
                // EventHubWrapper(connehub2, hubname3, message2).GetAwaiter().GetResult();
-               EventHubWrapper(connehub, hubname, message2).GetAwaiter().GetResult(); 
-                EventHubWrapper(connehub, hubname3, message2).GetAwaiter().GetResult(); 
+           //    EventHubWrapper(connehub, hubname, message2).GetAwaiter().GetResult(); 
+             //   EventHubWrapper(connehub, hubname3, message2).GetAwaiter().GetResult(); 
 
                 vegcount++;
                 Console.WriteLine("done this many veg: "+ vegcount.ToString());
 
                 Console.WriteLine("done batch");
-         
+                */
+
             }
         }
 

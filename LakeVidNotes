@@ -1,0 +1,57 @@
+Blob storage optimiized for unstructured (vids, pics etc)
+
+ADLS Gen 2 no file size limit
+
+Posix ACLs in ADLS gen 1
+
+....
+
+Data Lake Gen 2 - blob and ADLS 1 combined
+
+AzCopy for backup and recovery! 
+
+Parquet - supports predicate pushdown
+
+Slower writes for Orc and Parquet
+
+Avro has faster writes... or json or csv.
+
+Zones
+-----------
+archive, raw, reference, curated, temp, stage
+
+subsystems under raw for where come from...
+users in experimental area as subsystems...
+
+good file naming convention with descriptives and times (e.g. my avro file format)
+
+avoid empty folders and files or mixing file types within a folder hierarchy
+
+raw zone - use update date
+curated zone - use created date/business date
+
+raw = inbound/ingest...assumes incremental load
+never remove this data
+raw = ods
+
+curated - analytic zone. enriched, transformed
+
+staging or dwh? zone. 
+
+need a data catalog!
+don't have small files. so roll up the avro into large chunks!
+optimal file size, 64mb, 256mb...
+each compute engine you want to change settings.
+
+good metadata to add to curated stuff...
+createddate, processeddate, md5hash of the file, source 
+
+reference zone...?? 
+
+really really need to sort azure data catalog!!
+
+use curated for data warehouse dwh/dim
+				dwh/fact
+so bin model folder. 
+make sure add a function to be able to read the raw lake
+but can read and write in cooked. 

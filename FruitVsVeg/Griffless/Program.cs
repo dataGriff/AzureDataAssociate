@@ -6,6 +6,8 @@ using System.Text;
 using FruitConsole;
 using System.Net;
 using System.Linq;
+using System.Configuration;
+using System.Collections.Specialized;
 
 namespace Griffless
 {
@@ -15,8 +17,8 @@ namespace Griffless
 
         static void Main(string[] args)
         {
-            string connehub = "Endpoint=sb://grifftestjson.servicebus.windows.net/;SharedAccessKeyName=send;SharedAccessKey=MhPDUtbFl/kP/RN3C30QOdljUlxtkLrf3k+zsSJigDw=";
-            string hubname = "fruit";
+      //      string connehub = "Endpoint=sb://grifftestjson.servicebus.windows.net/;SharedAccessKeyName=send;SharedAccessKey=MhPDUtbFl/kP/RN3C30QOdljUlxtkLrf3k+zsSJigDw=";
+         //   string hubname = "fruit";
            // string hubname2 = "fruit";
            // string hubname3 = "veg";
 
@@ -32,9 +34,13 @@ namespace Griffless
                     Fruit fruit = new Fruit(a);
                     var message = JsonConvert.SerializeObject(fruit);                 //Remember Install-Package Newtonsoft.Json
                 Console.WriteLine(message);
+                if (ConfigurationManager.AppSettings.Get("HelloWorld") = "true")
+                {
+                    Console.WriteLine("hello world");
+                }
                // Console.ReadKey();
 
-                EventHubWrapper(connehub, hubname, message).GetAwaiter().GetResult();
+             //   EventHubWrapper(connehub, hubname, message).GetAwaiter().GetResult();
 
                 /*
                     //Console.WriteLine(message);

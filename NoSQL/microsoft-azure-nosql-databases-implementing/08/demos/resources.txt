@@ -1,0 +1,40 @@
+Module 08 resources (Gremlin API)
+---------------------------------
+
+
+Azure Cosmos DB: Gremlin API
+----------------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/graph-introduction
+https://docs.microsoft.com/en-us/azure/cosmos-db/gremlin-support
+
+
+Quickstart: Create, query, and traverse an Azure Cosmos DB graph database using Gremlin 
+---------------------------------------------------------------------------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/create-graph-gremlin-console
+
+
+Build a .NET application using the Azure Cosmos DB Gremlin API
+--------------------------------------------------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/create-graph-dotnet
+https://docs.microsoft.com/en-us/azure/cosmos-db/create-graph-dotnet#clone-the-sample-application
+
+
+More on Gremlin
+---------------
+https://en.wikipedia.org/wiki/Gremlin_(programming_language)
+
+
+Gremlin Console
+---------------
+https://tinkerpop.apache.org/docs/3.3.2/reference/#gremlin-console
+http://tinkerpop.apache.org/downloads.html
+
+
+More on the property graph
+--------------------------
+https://www.youtube.com/watch?v=NH6WoJHN4UA
+
+
+Vertices & vertex
+-----------------
+https://www.merriam-webster.com/dictionary/vertex

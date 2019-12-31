@@ -1,0 +1,7 @@
+g.V()
+g.V().count()
+g.E().count() 
+g.V('john')
+g.V('john').out('knows').hasLabel('person') 
+g.V('john').out('knows').hasLabel('person').values('id')
+g.V('john').out('knows').hasLabel('person').count()

@@ -1,0 +1,59 @@
+Resources for module 06 (MongoDB API)
+-------------------------------------
+
+MongoDB
+-------
+https://en.wikipedia.org/wiki/MongoDB
+https://docs.mongodb.com/manual/
+
+
+MongoDB Atlas
+-------------
+https://www.mongodb.com/cloud/atlas
+
+
+Studio 3T
+---------
+https://studio3t.com/
+https://www.youtube.com/watch?v=3fjHAlJLrpo
+
+
+Azure Cosmos DB Capacity Calculator
+-----------------------------------
+https://cosmos.azure.com/capacitycalculator/
+
+
+Azure Cosmos DB's API for MongoDB
+---------------------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction
+https://docs.microsoft.com/en-us/azure/cosmos-db/connect-mongodb-account
+https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-mongochef
+
+
+Mongo DB .NET SDK (Create a web API with ASP.NET Core and MongoDB)
+------------------------------------------------------------------
+https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mongo-app?view=aspnetcore-2.2&tabs=visual-studio
+
+
+Pre-migration steps
+-------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-pre-migration
+
+
+Migrate MongoDB to Azure Cosmos DB's API for MongoDB offline using DMS
+----------------------------------------------------------------------
+https://docs.microsoft.com/en-us/azure/dms/tutorial-mongodb-cosmos-db
+https://docs.microsoft.com/en-us/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json#prerequisites
+https://docs.microsoft.com/en-us/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json
+https://docs.microsoft.com/en-us/azure/dms/faq
+https://docs.microsoft.com/en-us/azure/dms/faq#setup
+
+
+Post-migration steps
+--------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-post-migration
+
+
+Indexing issue (Migrating collections with indexes)
+---------------------------------------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-indexing#migrating-collections-with-indexes

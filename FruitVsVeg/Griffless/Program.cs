@@ -17,13 +17,13 @@ namespace Griffless
 
         static void Main(string[] args)
         {
-      //      string connehub = "Endpoint=sb://grifftestjson.servicebus.windows.net/;SharedAccessKeyName=send;SharedAccessKey=MhPDUtbFl/kP/RN3C30QOdljUlxtkLrf3k+zsSJigDw=";
-         //   string hubname = "fruit";
-           // string hubname2 = "fruit";
-           // string hubname3 = "veg";
+                  string connehub = "Endpoint=sb://griff-fruit.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=J5TgnvVtqMD1C+L7yARlxGCLdsnnY+rq/vg1SHONgqM=";
+               string hubname = "fruit";
+            // string hubname2 = "fruit";
+            // string hubname3 = "veg";
 
-           // int fruitcount = 0;
-          //  int vegcount = 0;
+            // int fruitcount = 0;
+            //  int vegcount = 0;
 
 
             while (1 == 1)
@@ -34,13 +34,13 @@ namespace Griffless
                     Fruit fruit = new Fruit(a);
                     var message = JsonConvert.SerializeObject(fruit);                 //Remember Install-Package Newtonsoft.Json
                 Console.WriteLine(message);
-                if (ConfigurationManager.AppSettings.Get("HelloWorld") = "true")
+           /*     if (ConfigurationManager.AppSettings.Get("HelloWorld") = "true")
                 {
                     Console.WriteLine("hello world");
-                }
+                }*/
                // Console.ReadKey();
 
-             //   EventHubWrapper(connehub, hubname, message).GetAwaiter().GetResult();
+               EventHubWrapper(connehub, hubname, message).GetAwaiter().GetResult();
 
                 /*
                     //Console.WriteLine(message);

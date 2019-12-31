@@ -1,0 +1,14 @@
+Resources for module 04
+-----------------------
+
+https://docs.microsoft.com/en-us/azure/cosmos-db/introduction
+https://docs.microsoft.com/en-us/azure/cosmos-db/distribute-data-globally
+https://docs.microsoft.com/en-us/azure/cosmos-db/time-to-live
+https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-time-to-live
+https://docs.microsoft.com/en-us/azure/cosmos-db/consistency-levels
+https://docs.microsoft.com/en-us/azure/cosmos-db/partition-data
+https://docs.microsoft.com/en-us/azure/cosmos-db/set-throughput
+
+https://www.youtube.com/watch?v=-4FsGysVD14
+https://www.youtube.com/watch?v=UZiccUhvWKE
+https://www.youtube.com/watch?v=bscs9GAnSqM

@@ -1,0 +1,32 @@
+Module 03 - Azure Storage Account
+---------------------------------
+
+Overview
+--------
+https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview
+
+
+https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview#types-of-storage-accounts
+https://docs.microsoft.com/en-us/azure/cosmos-db/table-storage-overview
+https://docs.microsoft.com/en-us/rest/api/storageservices/Understanding-the-Table-Service-Data-Model
+https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction
+https://docs.microsoft.com/en-us/azure/storage/queues/storage-queues-introduction
+https://docs.microsoft.com/en-us/azure/storage/files/storage-files-introduction
+https://docs.microsoft.com/en-us/azure/security/fundamentals/storage-overview
+https://docs.microsoft.com/en-us/azure/storage/common/storage-security-guide
+https://docs.microsoft.com/en-us/rest/api/storageservices/table-service-concepts
+https://docs.microsoft.com/en-us/azure/storage/common/storage-performance-checklist
+https://docs.microsoft.com/en-us/dotnet/api/overview/azure/storage?view=azure-dotnet
+https://azure.microsoft.com/en-us/resources/samples/storage-table-dotnet-getting-started/
+https://docs.microsoft.com/en-us/azure/cosmos-db/tutorial-develop-table-dotnet
+https://docs.microsoft.com/en-us/azure/visual-studio/vs-storage-aspnet5-getting-started-tables
+
+
+SLA for Storage Accounts
+------------------------
+https://azure.microsoft.com/en-in/support/legal/sla/storage/v1_5/
+
+
+Microsoft Azure Storage performance and scalability checklist
+-------------------------------------------------------------
+https://docs.microsoft.com/en-us/azure/storage/common/storage-performance-checklist

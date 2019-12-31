@@ -1,0 +1,6 @@
+Module 02 resources : An introduction to NoSQL databases
+--------------------------------------------------------
+
+https://en.wikipedia.org/wiki/NoSQL
+https://docs.microsoft.com/en-us/azure/cosmos-db/introduction
+https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview

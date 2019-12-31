@@ -1,0 +1,30 @@
+Module 09 resources (Azure Cosmos DB Cassandra API)
+===================================================
+
+Introduction to the Azure Cosmos DB Cassandra API
+-------------------------------------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/cassandra-introduction
+
+
+Quickstart: Build a Cassandra app with .NET SDK and Azure Cosmos DB
+-------------------------------------------------------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/create-cassandra-dotnet
+
+
+The Cassandra Query Language (CQL)
+----------------------------------
+http://cassandra.apache.org/doc/latest/cql/
+
+
+More on Apache Cassandra
+------------------------
+https://cassandra.apache.org/
+https://cassandra.apache.org/doc/latest/getting_started/index.html
+https://www.youtube.com/watch?v=B_HTdrTgGNs
+https://en.wikipedia.org/wiki/Apache_Cassandra
+https://en.wikipedia.org/wiki/Wide_column_store
+https://docs.datastax.com/en/developer/java-driver/3.6/manual/native_protocol/
+
+
+
+

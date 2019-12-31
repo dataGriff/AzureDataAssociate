@@ -1,0 +1,43 @@
+Module 07 resources (Azure Cosmos DB Table API)
+-----------------------------------------------
+
+
+Introduction to Azure Cosmos DB: Table API
+------------------------------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/table-introduction
+
+
+Benefits by moving to the Azure Cosmos DB Table API
+---------------------------------------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/table-introduction#table-offerings
+
+
+Azure Cosmos DB Table .NET API
+------------------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/table-sdk-dotnet
+
+
+Migration using Cosmos DB Data Migration Tool (only use the command line version)
+---------------------------------------------------------------------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/import-data
+https://docs.microsoft.com/en-us/azure/cosmos-db/table-import
+https://stackoverflow.com/questions/51802662/getting-the-given-header-is-not-found-while-connecting-to-cosmos-db
+https://github.com/Azure/azure-documentdb-datamigrationtool/issues/89
+
+
+Migrate using AzCopy
+--------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/table-import#migrate-data-by-using-azcopy
+https://docs.microsoft.com/en-us/previous-versions/azure/storage/storage-use-azcopy#export-data-from-table-storage
+https://docs.microsoft.com/en-us/previous-versions/azure/storage/storage-use-azcopy#import-data-into-table-storage
+
+
+OData
+-----
+https://www.odata.org/getting-started/basic-tutorial/
+https://docs.microsoft.com/en-us/dynamics-nav/using-filter-expressions-in-odata-uris
+
+
+Where is Table API not identical with Azure Table storage behavior?
+-------------------------------------------------------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/faq#where-is-table-api-not-identical-with-azure-table-storage-behavior

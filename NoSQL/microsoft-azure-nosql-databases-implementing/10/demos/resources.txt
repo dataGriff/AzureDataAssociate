@@ -1,0 +1,52 @@
+Resources for module 10 (Azure Data Lake Gen 2)
+===============================================
+
+
+Introduction to Azure Data Lake Storage Gen2
+--------------------------------------------
+https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction
+https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-quickstart-create-account
+
+
+Great Pluralsight Course on Implementing Data Lake Storage Gen2
+---------------------------------------------------------------
+https://app.pluralsight.com/library/courses/microsoft-azure-data-lake-storage-gen2-implementing/table-of-contents
+
+
+Azure Data Lake Store REST API
+------------------------------
+https://docs.microsoft.com/en-us/rest/api/storageservices/data-lake-storage-gen2
+
+
+Access control in Azure Data Lake Storage Gen2
+----------------------------------------------
+https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control
+https://docs.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-access-control#permissions-inheritance
+
+
+Azure Data Factory
+------------------
+https://azure.microsoft.com/en-ca/services/data-factory/
+
+
+AzCopy
+------
+https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10
+
+
+Azure Storage Explorer
+----------------------
+https://azure.microsoft.com/en-us/features/storage-explorer/
+
+
+What is Azure Data Lake Storage Gen1?
+-------------------------------------
+https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-overview
+
+
+More resources
+--------------
+https://hadoop.apache.org/docs/r1.2.1/hdfs_design.html
+https://en.wikipedia.org/wiki/File_system_permissions
+
+

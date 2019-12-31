@@ -1,0 +1,33 @@
+Resources for module 05 - SQL(Core) API
+=======================================
+
+Getting started with SQL queries
+--------------------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/sql-query-getting-started
+
+
+Quickstart: Build a .NET console app to manage Azure Cosmos DB SQL API resources
+--------------------------------------------------------------------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/create-sql-api-dotnet
+
+
+Data migration tool to migrate your data to Azure Cosmos DB
+-----------------------------------------------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/import-data
+
+
+How to provision Azure SQL Database with sample data
+----------------------------------------------------
+https://app.pluralsight.com/player?course=microsoft-azure-implementing-relational-database-solutions&author=reza-salehi&name=e35c7cc7-8ffa-4534-8834-2f3912d14274&clip=5&mode=live
+
+
+Unique key constraints in Azure Cosmos DB 
+-----------------------------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/unique-keys
+
+
+Indexing in Azure Cosmos DB
+---------------------------
+https://docs.microsoft.com/en-us/azure/cosmos-db/index-overview
+https://docs.microsoft.com/en-us/azure/cosmos-db/index-policy
+https://docs.microsoft.com/en-us/azure/cosmos-db/how-to-manage-indexing-policy

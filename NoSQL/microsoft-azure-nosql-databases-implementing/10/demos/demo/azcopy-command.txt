@@ -1,0 +1,5 @@
+set ACCOUNT_NAME=<YOUR ACCOUNT NAME>
+
+set ACCOUNT_KEY=<YOUR ACCOUNT KEY>
+
+azcopy.exe cp "<LOCAL FOLDER PATH>\*" "https://<STORAGE ACCOUNT NAME>.dfs.core.windows.net/<YOUR FILESYSTEM NAME>/<SUBFOLDER NAME>" --recursive=true

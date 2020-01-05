@@ -81,6 +81,7 @@
 SELECT xtp_storage_pereent FROM dm_db_resource_stats
 --
 ```
+* Advancted threat protection types - All, SQL Injection, Unsafe action, brute force, anomalous client login, sql injection vulnerability, data exfiltration
 
 ### Bring your own key for TDE
 

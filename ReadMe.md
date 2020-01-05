@@ -1,17 +1,17 @@
 
 ## Exam Notes
 
-* [General]()
-* [Azure SQL]()
-* [Synapse]()
-* [Cosmos]()
-* [Storage]()
-* [ADF]()
-* [Databricks]()
-* [HubsAndStreams]()
-
+* [Azure SQL](##Azure&#32;SQL)
+* [Synapse](##Synapse)
+* [Cosmos](##Cosmos)
+* [Storage](##Storage)
+* [Data Factory](##Data&#32;Factory)
+* [Databricks](##Databricks)
+* [Hubs And Streams](##Hubs&#32;And&#32;Streams)
+* [Azure Data Explorer](##Azure&#32;Data&#32;Explorer)
 
 ## Azure SQL
+[Back to top](##Exam&#32;Notes)
 
 * VIEW DATABASE STATE in order to see DMVs
 * Use Azure SQL Data sync when want bi-direction sync and good for starting up
@@ -129,8 +129,8 @@ Age int NULL
 GO  
 ```
 
-### Synapse
-
+## Synapse
+[Back to top](##Exam&#32;Notes)
 ### DMVs
 * sys.dm_pdw_exec_requests - current or recent queries, e.g. long running ones
 * sys.dm_pdw_exec_sessions - current or recent logins e.g. ip address, number of queries
@@ -143,6 +143,18 @@ GO
 1. Create external file format
   * First row =2 to skip header
 1. Create external table
+
+### CTAS
+
+```sql 
+CREATE TABLE dbo.TEST
+with
+(
+CLUSTERED COLUMNSTORE INDEX
+,  DISTRIBUTION = ROUND_ROBIN
+) as select * from ext.test
+OPTION (Label='CTAS@ MyTestLoad')
+```
 
 ### Distribution
 
@@ -189,7 +201,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 * [Useful DMV](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-tables-overview#table-size-queries)
 
 ## Cosmos 
-
+[Back to top](##Exam&#32;Notes)
 * A client can change consistency level at conneciton time and for each request
 * TTL -1 means indefinite
 * TTL null inherits TTL from above
@@ -213,7 +225,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 * Gremlin API - Graph for container and edge for item.
 
 ## Storage 
-
+[Back to top](##Exam&#32;Notes)
 * Premium tier storage account is to store block and append blobs. 
 * Gen purpose V2 used the most. 
 
@@ -272,10 +284,20 @@ DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 ```
 
 ## Data Factory
-
+[Back to top](##Exam&#32;Notes)
+* **Pipelines** are what you execute and run, your workflow. 
+* **DataFlow** mapping and wrangling.
+* **Dataset** the format and a location of data. e.g. a table.
 * **Linked Service** is the connection string essentially. The location and auth. 
+* **Integration Runtimes** Azure, Self-hosted and Azure-SSIS
+* **Triggers** schedule, interval, event driven. 
+* **Templates** - lots of templates out of the box in adf. 
 
 * To access databricks you require access token
+* You can execute a pipeline in another pipeline
+* You can run azure data explorer kusto commands in data factory
+* You can run batch service in data factory 
+* To link to key vault you need to create a linked service to key vault 
 
 ### Steps to Implement SSIS IR
 
@@ -293,10 +315,11 @@ DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 
 * Send logs to azure monitor and alerts. Can be done in portal or ADF UI. 
 * To keep data for more than 45 days configure diagnostic logs and send to storage acocunt, event hub or log analytics workspace. 
+* 
 
 
 ## Databricks
-
+[Back to top](##Exam&#32;Notes)
 * Databricks CLI and Secrets API can only be used to create databricks db back secrets. not from KV.
 * Databricks can only use kv secrets by going to e.g. 
 https://northeurope.azuredatabricks.net/?o=8123456789#secrets/createScope
@@ -304,6 +327,14 @@ https://northeurope.azuredatabricks.net/?o=8123456789#secrets/createScope
 * THerefore requires third party to send to azure monitor
 * Metrics stored in azure log analytics workspace
 * By default databricks metrics available in ganglia
+* Spark can be used for batch and stream
+* Hadoop mapreduce only for batch
+* Scala, python, R, SQL, Java APIs
+* Spark native MLib machine learning built in
+* You install libraries on your cluster for additional functionality e.g. event hub stuff
+```
+com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.12
+```
 
 ```
 --lists content of path
@@ -333,8 +364,8 @@ dbutils.library.help()
 * Configure with spark.conf.set()
 * Mount the file system
 
-## Hub and Stream
-
+## Hubs And Streams
+[Back to top](##Exam&#32;Notes)
 * Time windowing...
 * **Tumbling** - no overlap, fixed size. TumblingWindow(second,5)
 * **Hopping** - overlap, fixed size. HoppingWindow(second,10,5). (unit,size,hop)
@@ -354,7 +385,38 @@ dbutils.library.help()
 * All admin operations signal logic to look for failed status.
 * Runtime errors would show errors, but data would still be coming in so would not show unexpeced stoppages. 
 
+## Azure Data Explorer
+[Back to top](##Exam&#32;Notes)
+* Query event hubs!
+* If streaming not in batches like every 5 minutes
+* ARM template fro cluster and database
+* Kusto language for creating tables etc and you can deploy this via azure devops too [see here](https://docs.microsoft.com/en-us/azure/data-explorer/devops)
+* Permissions done by RBAC. 
+* You can use data factory with azure data explorer too. 
+* when you stop and start cluster it bring everything back in from where you paused it...! nice! 
+
+```kql
+.create table fruittab (FruitName:string,FruitColour:string,Date:datetime,StandardLog:dynamic)
+```
+
+```kql
+.create table fruittab ingestion json mapping 'fruitmap' '[{"column":"FruitName","path":"$.name","datatype":"string"},{"column":"FruitColour","path":"$.colour","datatype":"string"},{"column":"Date","path":"$.standardLog.dt","datatype":"datetime"},{"column":"standardLog","path":"$.standardLog","datatype":"dynamic"}]'
+```
+
+```kql
+fruittab 
+| order by Date desc 
+```
+
+## Azure batch
+[Back to top](##Exam&#32;Notes)
+
+* aztk azure distributed data engineering toolkit built on top of azure batch
+* low priority vms to save money maybe
+* provision on demand spark clusters and run spark jobs 
+
 ## HD Insight
+[Back to top](##Exam&#32;Notes)
 
 * Apache Ambari - YARN manager, monitor and configure
 * Azure monitor logs to get consolidate dview of all hd insights clusters. All the logs can be sent to central consolidated view, this can't be seen in ambari.

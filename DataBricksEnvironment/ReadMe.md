@@ -69,3 +69,12 @@
 * When you create job json you can amend the variables in the job configuration
 
 ## Streaming Kafka
+
+* Kafka on HDInsights
+* Event > Topic (HDInsights Kafka cluster and brokers) > Event Consumer
+* Event consumer can be databricks
+* HDInsight > Cluster Type Kafka.. > put on vNet > use storage account > cluster size 
+* Apache Ambari > Kafka configuration > restart to get kafka to pick up new config
+* Create databricks > new cluster 
+* vnet peering in data bricks and add another vnet. then go into the actual vnet and sort peering in there. 
+* spark.readstream.format("...")
